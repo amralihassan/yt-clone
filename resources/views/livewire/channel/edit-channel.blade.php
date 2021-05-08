@@ -1,4 +1,7 @@
 <div>
+    @if ($channel->image)
+        <img src="{{asset('images'.'/'.$channel->image)}}" class="img-thumbnail">
+    @endif
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <form wire:submit.prevent="update">
 
