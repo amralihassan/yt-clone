@@ -38,11 +38,15 @@ class CreateVideo extends Component
         // validation
         $this->validate();
 
+        $path = $this->video_file->store('video-temp');
+
+
         // create video record in sb
         $this->video = $this->channel->videos()->create([
             'title' => 'un title',
             'description' => 'none',
             'uid' => uniqid(true),
+            'path' => explode('/', $path)[1]
         ]);
         // redirect eo edit route
         return redirect()->route('video.edit', ['channel' => $this->channel, 'video' => $this->video]);
